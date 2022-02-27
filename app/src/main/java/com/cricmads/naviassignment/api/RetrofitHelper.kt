@@ -1,6 +1,6 @@
 package com.cricmads.naviassignment.api
 
-import com.cricmads.naviassignment.Constants.BASE_URL
+import com.cricmads.naviassignment.utils.Constants.BASE_URL
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 

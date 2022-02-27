@@ -1,4 +1,4 @@
-package com.cricmads.naviassignment
+package com.cricmads.naviassignment.utils
 
 object Constants {
 
