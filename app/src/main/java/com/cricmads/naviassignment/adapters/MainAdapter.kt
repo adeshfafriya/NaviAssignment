@@ -50,7 +50,7 @@ class MainAdapter(private var list : PullsResponse): RecyclerView.Adapter<MainAd
                 }else binding.image.visibility = View.GONE
 
                 binding.userName.visibility = View.VISIBLE
-                binding.userName.text = item.user!!.login
+                binding.userName.text = binding.root.context.getString(R.string.user, item.user!!.login)
 
             } else {
                 binding.image.visibility = View.GONE
