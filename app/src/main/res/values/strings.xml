@@ -1,8 +1,10 @@
 <resources>
     <string name="app_name">NaviAssignment</string>
-    <string name="internet_connection">Please check your Internet connection and try again</string>
+    <string name="internet_connection_unavailable">Please check your Internet connection and try again</string>
     <string name="unknown_error">An Unknown Error occurred, please try again</string>
     <string name="reload">Reload</string>
     <string name="created_on">Created On: %1$s</string>
     <string name="closed_on">Closed On: %1$s</string>
+    <string name="no_requests_found">No Closed Pull Requests found.</string>
+    <string name="user">User: %1$s</string>
 </resources>

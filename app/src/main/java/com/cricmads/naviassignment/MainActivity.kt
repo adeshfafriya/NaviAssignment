@@ -6,6 +6,10 @@ import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.cricmads.naviassignment.adapters.MainAdapter
 import com.cricmads.naviassignment.databinding.ActivityMainBinding
 import com.cricmads.naviassignment.models.PullsResponse
 import com.cricmads.naviassignment.utils.Result
@@ -34,13 +38,22 @@ class MainActivity : AppCompatActivity(), Observer<Result<PullsResponse>> {
         when(t){
             is Result.Success -> { onResultSuccess(t.data) }
             is Result.Error -> { onResultFailure(t.message) }
-            is Result.NetworkUnavailable -> { onResultFailure(getString(R.string.internet_connection)) }
+            is Result.NetworkUnavailable -> { onResultFailure(getString(R.string.internet_connection_unavailable)) }
             null -> { onResultFailure(getString(R.string.unknown_error)) }
         }
     }
 
     private fun onResultSuccess(data: PullsResponse?) {
-        binding.recyclerView.visibility = View.VISIBLE
+        if (data != null && data.size > 0){
+
+            binding.recyclerView.visibility = View.VISIBLE
+            binding.recyclerView.layoutManager = LinearLayoutManager(this)
+            binding.recyclerView.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
+            binding.recyclerView.adapter = MainAdapter(data)
+
+        } else {
+            onResultFailure(getString(R.string.no_requests_found))
+        }
     }
 
     private fun onResultFailure(message: String?){
