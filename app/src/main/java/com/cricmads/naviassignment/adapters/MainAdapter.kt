@@ -10,6 +10,7 @@ import com.cricmads.naviassignment.R
 import com.cricmads.naviassignment.databinding.PullRequestLayoutItemBinding
 import com.cricmads.naviassignment.models.PullsItem
 import com.cricmads.naviassignment.models.PullsResponse
+import com.cricmads.naviassignment.utils.DateUtils
 
 class MainAdapter(private var list : PullsResponse): RecyclerView.Adapter<MainAdapter.PullsHolder>() {
 
@@ -32,13 +33,13 @@ class MainAdapter(private var list : PullsResponse): RecyclerView.Adapter<MainAd
 
             if (!TextUtils.isEmpty(item.createdAt)){
                 binding.created.visibility = View.VISIBLE
-                binding.created.text = binding.root.context.getString(R.string.created_on, item.createdAt)
+                binding.created.text = binding.root.context.getString(R.string.created_on, DateUtils.getFormattedDate(item.createdAt!!))
             } else binding.created.visibility = View.GONE
 
 
             if (!TextUtils.isEmpty(item.closedAt)){
                 binding.closed.visibility = View.VISIBLE
-                binding.closed.text = binding.root.context.getString(R.string.closed_on, item.closedAt)
+                binding.closed.text = binding.root.context.getString(R.string.closed_on, DateUtils.getFormattedDate(item.closedAt!!))
             } else binding.closed.visibility = View.GONE
 
 
